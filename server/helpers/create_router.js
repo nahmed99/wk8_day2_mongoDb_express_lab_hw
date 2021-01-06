@@ -36,7 +36,9 @@ const createRouter = function (collection) {
 
   // Create route
   // POST /
-  router.post("/", (request, response) => {  // illustrating that you can name the parameters anything you want
+  router.post("/", (request, response) => { 
+
+    // response.send("placeholder POST"); // This will show up in Insomnia - if you are using it!
     
     // get the body (data) from the *request*
     const newData = request.body;
@@ -51,6 +53,20 @@ const createRouter = function (collection) {
     });
   });
 
+
+  // Delete route
+  // DELETE /:id
+  router.delete("/:theId", (request, response) => {
+    // response.send("placeholder DELETE"); // This will show up in Insomnia - if you are using it!
+
+    const id = request.params.theId;
+
+    collection.deleteOne( { _id: ObjectID(id) })
+    .then((result) => {
+      return response.json(result);
+    });
+
+  });
 
 
   return router;
