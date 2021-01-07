@@ -54,7 +54,7 @@ const createRouter = function (collection) {
     .catch((err) => {
       console.error(err);
       response.status(500);
-      response.json({ status: 500, error: err });
+      response.json( { status: 500, error: err } );
     });
   });
 
@@ -69,6 +69,11 @@ const createRouter = function (collection) {
     collection.deleteOne( { _id: ObjectID(id) })
     .then((result) => {
       return response.json(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500);
+      res.json({ status: 500, error: err });
     });
 
   });
