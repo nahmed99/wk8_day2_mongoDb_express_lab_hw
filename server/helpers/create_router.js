@@ -76,6 +76,21 @@ const createRouter = function (collection) {
       res.json({ status: 500, error: err });
     });
 
+
+    // Could have written the delete as - need to decypher it...:
+    /*
+
+    collection
+      .deleteOne({ _id: ObjectID(id) })
+      .then(() => collection.find().toArray())
+      .then((docs) => response.json(docs))
+      .catch((err) => {
+        console.error(err)
+        response.status(500);
+        response.json({ status: 500, error: err});
+      });
+
+    */
   });
 
 
