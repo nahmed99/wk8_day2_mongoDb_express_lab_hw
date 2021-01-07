@@ -50,6 +50,11 @@ const createRouter = function (collection) {
       response.json(result.ops[0]); 
       // res.json(result.ops); // Will return the whole result of the insert into the database - including success (etc) codes etc.
 
+    })
+    .catch((err) => {
+      console.error(err);
+      response.status(500);
+      response.json({ status: 500, error: err });
     });
   });
 
